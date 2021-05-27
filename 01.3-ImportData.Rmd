@@ -1,0 +1,48 @@
+---
+title: "Import data from Excel to R"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Import data from Excel to R{-}
+
+First, we need to select import dataset from Excel
+<hr/>
+![](https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/Import%20data/Import%20Data%20part%20A.png)
+<hr/>
+![](https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/Import%20data/Import%20Data%20part%20B.png)
+<hr/>
+Select Browse
+
+![](https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/Import%20data/Import%20Data%20part%20C.png)
+<hr/>
+Select the right Excel file
+
+![](https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/Import%20data/Import%20Data%20part%20D.png)
+<hr/>
+Change the name to make it easy to use
+
+![](https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/Import%20data/Import%20Data%20part%20E.png)
+<hr/>
+
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/Import%20data/Data1.csv")
+data
+```
+The first row is converted to the name of the data. If the data from Excel does not have a name, we will miss one value by importing directly from Excel.
+To avoid that, we should move the data from the first row to the last and give a name for the data.
+
+For example, in the second data sheet I move A to the last row and give x as the name of the data.
+```{r}
+data2 <- read.csv("https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/Import%20data/Data2.csv")
+data2
+```
+We can retrieve the data by using its name
+```{r}
+y = data2$x
+y
+```
+<hr/>

@@ -1,0 +1,35 @@
+---
+title: "Notice"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Notice{-}
+<hr/>
+There are two main reasons that this document does not use third party package.
+
+* We do not know which formulas they use behind the scene and sometimes it is hard to retrieve data.
+
+* We could avoid technical difficulties.
+
+* We do not have to keep up to date every time that third party changes their package. 
+
+* The document uses formulas from the book and these formulas have a long history with statistic which means they are consistent over time. We could write our third party package based on these formulas. 
+
+<hr/>
+
+**The way that R round number is slightly differen than the book.**
+```{r}
+round(1.5, 0)
+round(.15,1)
+```
+<hr/>
+To have a better understanding about how round() works, we could read the instruction from help()
+```{r}
+help(round)
+```
+<hr/>
+

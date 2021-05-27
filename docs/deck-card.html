@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.1.14 deck card | 16.3.60</title>
+  <meta name="description" content="4.1.14 deck card | 16.3.60" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.1.14 deck card | 16.3.60" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.1.14 deck card | 16.3.60" />
+  
+  
+  
+
+
+
+<meta name="date" content="2021-05-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="population-mean.html"/>
+<link rel="next" href="probability-distribution.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-198021424-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-198021424-1');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="#">MTH 1320 UMSL</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="notice.html"><a href="notice.html"><i class="fa fa-check"></i>Notice</a></li>
+<li class="chapter" data-level="" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i>Install R</a></li>
+<li class="chapter" data-level="" data-path="import-data-from-excel-to-r.html"><a href="import-data-from-excel-to-r.html"><i class="fa fa-check"></i>Import data from Excel to R</a></li>
+<li class="chapter" data-level="" data-path="frequency-distribution.html"><a href="frequency-distribution.html"><i class="fa fa-check"></i>2.2.25 frequency distribution</a></li>
+<li class="chapter" data-level="" data-path="relative-frequency-distribution.html"><a href="relative-frequency-distribution.html"><i class="fa fa-check"></i>2.3.65 relative-frequency distribution</a></li>
+<li class="chapter" data-level="" data-path="steam-leaf.html"><a href="steam-leaf.html"><i class="fa fa-check"></i>2.3.77 steam-leaf</a></li>
+<li class="chapter" data-level="" data-path="mean-mode-and-median.html"><a href="mean-mode-and-median.html"><i class="fa fa-check"></i>3.1.19 mean, mode, and median</a></li>
+<li class="chapter" data-level="" data-path="quartiles.html"><a href="quartiles.html"><i class="fa fa-check"></i>3.4.171 quartiles</a></li>
+<li class="chapter" data-level="" data-path="population-mean.html"><a href="population-mean.html"><i class="fa fa-check"></i>3.5.199 population mean</a></li>
+<li class="chapter" data-level="" data-path="deck-card.html"><a href="deck-card.html"><i class="fa fa-check"></i>4.1.14 deck card</a></li>
+<li class="chapter" data-level="" data-path="probability-distribution.html"><a href="probability-distribution.html"><i class="fa fa-check"></i>5.2.31 probability distribution</a></li>
+<li class="chapter" data-level="" data-path="area-from-z-score.html"><a href="area-from-z-score.html"><i class="fa fa-check"></i>6.2.61 area from z-score</a></li>
+<li class="chapter" data-level="" data-path="z-score.html"><a href="z-score.html"><i class="fa fa-check"></i>6.2.75 z-score</a></li>
+<li class="chapter" data-level="" data-path="z-score-percentage.html"><a href="z-score-percentage.html"><i class="fa fa-check"></i>6.3.97 z-score, percentage</a></li>
+<li class="chapter" data-level="" data-path="population-and-sample-means.html"><a href="population-and-sample-means.html"><i class="fa fa-check"></i>7.1.13 population and sample means</a></li>
+<li class="chapter" data-level="" data-path="sample-standard-deviation.html"><a href="sample-standard-deviation.html"><i class="fa fa-check"></i>7.3.73 sample standard deviation</a></li>
+<li class="chapter" data-level="" data-path="population-mean-confidence-interval.html"><a href="population-mean-confidence-interval.html"><i class="fa fa-check"></i>8.1.11 population mean, confidence interval</a></li>
+<li class="chapter" data-level="" data-path="point-estimated.html"><a href="point-estimated.html"><i class="fa fa-check"></i>8.1.7 point estimated</a></li>
+<li class="chapter" data-level="" data-path="one-mean-z-interval-procedure.html"><a href="one-mean-z-interval-procedure.html"><i class="fa fa-check"></i>8.2.63 one-mean-z-interval procedure</a></li>
+<li class="chapter" data-level="" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html"><i class="fa fa-check"></i>8.3.130 one sample t-test</a></li>
+<li class="chapter" data-level="" data-path="left-tailed-z-test-without-data.html"><a href="left-tailed-z-test-without-data.html"><i class="fa fa-check"></i>9.4.77 left-tailed z-test without data</a></li>
+<li class="chapter" data-level="" data-path="left-tailed-z-test-with-data.html"><a href="left-tailed-z-test-with-data.html"><i class="fa fa-check"></i>9.4.85 left-tailed z-test with data</a></li>
+<li class="chapter" data-level="" data-path="t-test.html"><a href="t-test.html"><i class="fa fa-check"></i>9.5.111 t-test</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-two-tailed.html"><a href="pooled-t-test-two-tailed.html"><i class="fa fa-check"></i>10.2.39 pooled t-test two-tailed</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-right-tailed.html"><a href="pooled-t-test-right-tailed.html"><i class="fa fa-check"></i>10.2.41 pooled t-test right-tailed</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-with-data.html"><a href="pooled-t-test-with-data.html"><i class="fa fa-check"></i>10.2.51 pooled t-test with data</a></li>
+<li class="chapter" data-level="" data-path="nonpooled-t-test-left-tailed.html"><a href="nonpooled-t-test-left-tailed.html"><i class="fa fa-check"></i>10.3.77 nonpooled t.test left-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-two-tailed.html"><a href="paired-t-test-two-tailed.html"><i class="fa fa-check"></i>10.5.149 paired t-test two-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-left-tailed.html"><a href="paired-t-test-left-tailed.html"><i class="fa fa-check"></i>10.5.157 paired t-test left-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-with-confidence-interval.html"><a href="paired-t-test-with-confidence-interval.html"><i class="fa fa-check"></i>10.5.161 paired t-test with confidence interval</a></li>
+<li class="chapter" data-level="" data-path="random-sample-confidence-interval.html"><a href="random-sample-confidence-interval.html"><i class="fa fa-check"></i>12.1.17 random sample confidence interval</a></li>
+<li class="chapter" data-level="" data-path="one-proportion-z-interval.html"><a href="one-proportion-z-interval.html"><i class="fa fa-check"></i>12.1.25 one-proportion z-interval</a></li>
+<li class="chapter" data-level="" data-path="sample-size-without-educated-guess.html"><a href="sample-size-without-educated-guess.html"><i class="fa fa-check"></i>12.1.31 sample size without educated guess</a></li>
+<li class="chapter" data-level="" data-path="sample-size-with-educated-guess.html"><a href="sample-size-with-educated-guess.html"><i class="fa fa-check"></i>12.1.37 sample size with educated guess</a></li>
+<li class="chapter" data-level="" data-path="one-proportion-z-test.html"><a href="one-proportion-z-test.html"><i class="fa fa-check"></i>12.2.81 one-proportion z-test</a></li>
+<li class="chapter" data-level="" data-path="two-proportion-z-test.html"><a href="two-proportion-z-test.html"><i class="fa fa-check"></i>12.3.101 two proportion z-test</a></li>
+<li class="chapter" data-level="" data-path="chi-squared-value.html"><a href="chi-squared-value.html"><i class="fa fa-check"></i>13.1.5 chi squared​-value</a></li>
+<li class="chapter" data-level="" data-path="chi-squaredtest.html"><a href="chi-squaredtest.html"><i class="fa fa-check"></i>13.2.18 chi squared​test</a></li>
+<li class="chapter" data-level="" data-path="contingency-table.html"><a href="contingency-table.html"><i class="fa fa-check"></i>13.3.43 contingency table</a></li>
+<li class="chapter" data-level="" data-path="expected-frequencies.html"><a href="expected-frequencies.html"><i class="fa fa-check"></i>13.4.75 expected frequencies</a></li>
+<li class="chapter" data-level="" data-path="chi-squared-test-with-data.html"><a href="chi-squared-test-with-data.html"><i class="fa fa-check"></i>13.5.103 chi squared test with data</a></li>
+<li class="chapter" data-level="" data-path="linear-regression-line.html"><a href="linear-regression-line.html"><i class="fa fa-check"></i>14.2.63 linear regression line</a></li>
+<li class="chapter" data-level="" data-path="sst-ssr-and-sse.html"><a href="sst-ssr-and-sse.html"><i class="fa fa-check"></i>14.3.100 SST, SSR, and​ SSE</a></li>
+<li class="chapter" data-level="" data-path="sst-ssr-and-sse-1.html"><a href="sst-ssr-and-sse-1.html"><i class="fa fa-check"></i>14.3.97 SST, SSR, and​ SSE</a></li>
+<li class="chapter" data-level="" data-path="f-value.html"><a href="f-value.html"><i class="fa fa-check"></i>16.1.7 F-value</a></li>
+<li class="chapter" data-level="" data-path="anova-table.html"><a href="anova-table.html"><i class="fa fa-check"></i>16.3.43 ANOVA table</a></li>
+<li class="chapter" data-level="" data-path="one-way-anova-test.html"><a href="one-way-anova-test.html"><i class="fa fa-check"></i>16.3.49 one-way ANOVA test</a></li>
+<li class="chapter" data-level="" data-path="one-way-anova-test-1.html"><a href="one-way-anova-test-1.html"><i class="fa fa-check"></i>16.3.60 one-way ANOVA test</a></li>
+<li class="divider"></li>
+<li><a href="#" target="blank">Congratulations!</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">16.3.60</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="deck-card" class="section level1 unnumbered">
+<h1>4.1.14 deck card</h1>
+An ordinary deck of playing cards has 52 cards. There are four suitslong dash
+​spades, ​hearts, diamonds, and clubslong dash with 13 cards in each suit. Spades and clubs are​ black; hearts and diamonds are red. If one of these cards is selected at​ random, what is the probability that it is
+<br/>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/4.1.14%20deck%20card/English_pattern_playing_cards_deck.svg.png" />
+<hr/>
+<p><strong>(a). The probability of selecting a jack is </strong></p>
+<p>From the image, there are 4 jack cards. So the probability is <span class="math inline">\(\frac{4}{52}=\frac{1}{13}\)</span></p>
+<p><strong>(b). The probability of selecting a red card is </strong></p>
+<p>From the image, there are 26 jack cards. So the probability is <span class="math inline">\(\frac{26}{52}=\frac{1}{2}\)</span></p>
+<p><strong>(c). The probability of selecting a card that is not a heart is </strong></p>
+There are 13 heart cards. So the probability is <span class="math inline">\(\frac{52-13}{52}=\frac{3}{4}\)</span>
+<hr/>
+<p><strong>Hope that helps!</strong></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="population-mean.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="probability-distribution.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04.1.14.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["main.pdf", "main.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

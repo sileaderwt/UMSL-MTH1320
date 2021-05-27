@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>14.2.63 linear regression line | 16.3.60</title>
+  <meta name="description" content="14.2.63 linear regression line | 16.3.60" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="14.2.63 linear regression line | 16.3.60" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="14.2.63 linear regression line | 16.3.60" />
+  
+  
+  
+
+
+
+<meta name="date" content="2021-05-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chi-squared-test-with-data.html"/>
+<link rel="next" href="sst-ssr-and-sse.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-198021424-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-198021424-1');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="#">MTH 1320 UMSL</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="notice.html"><a href="notice.html"><i class="fa fa-check"></i>Notice</a></li>
+<li class="chapter" data-level="" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i>Install R</a></li>
+<li class="chapter" data-level="" data-path="import-data-from-excel-to-r.html"><a href="import-data-from-excel-to-r.html"><i class="fa fa-check"></i>Import data from Excel to R</a></li>
+<li class="chapter" data-level="" data-path="frequency-distribution.html"><a href="frequency-distribution.html"><i class="fa fa-check"></i>2.2.25 frequency distribution</a></li>
+<li class="chapter" data-level="" data-path="relative-frequency-distribution.html"><a href="relative-frequency-distribution.html"><i class="fa fa-check"></i>2.3.65 relative-frequency distribution</a></li>
+<li class="chapter" data-level="" data-path="steam-leaf.html"><a href="steam-leaf.html"><i class="fa fa-check"></i>2.3.77 steam-leaf</a></li>
+<li class="chapter" data-level="" data-path="mean-mode-and-median.html"><a href="mean-mode-and-median.html"><i class="fa fa-check"></i>3.1.19 mean, mode, and median</a></li>
+<li class="chapter" data-level="" data-path="quartiles.html"><a href="quartiles.html"><i class="fa fa-check"></i>3.4.171 quartiles</a></li>
+<li class="chapter" data-level="" data-path="population-mean.html"><a href="population-mean.html"><i class="fa fa-check"></i>3.5.199 population mean</a></li>
+<li class="chapter" data-level="" data-path="deck-card.html"><a href="deck-card.html"><i class="fa fa-check"></i>4.1.14 deck card</a></li>
+<li class="chapter" data-level="" data-path="probability-distribution.html"><a href="probability-distribution.html"><i class="fa fa-check"></i>5.2.31 probability distribution</a></li>
+<li class="chapter" data-level="" data-path="area-from-z-score.html"><a href="area-from-z-score.html"><i class="fa fa-check"></i>6.2.61 area from z-score</a></li>
+<li class="chapter" data-level="" data-path="z-score.html"><a href="z-score.html"><i class="fa fa-check"></i>6.2.75 z-score</a></li>
+<li class="chapter" data-level="" data-path="z-score-percentage.html"><a href="z-score-percentage.html"><i class="fa fa-check"></i>6.3.97 z-score, percentage</a></li>
+<li class="chapter" data-level="" data-path="population-and-sample-means.html"><a href="population-and-sample-means.html"><i class="fa fa-check"></i>7.1.13 population and sample means</a></li>
+<li class="chapter" data-level="" data-path="sample-standard-deviation.html"><a href="sample-standard-deviation.html"><i class="fa fa-check"></i>7.3.73 sample standard deviation</a></li>
+<li class="chapter" data-level="" data-path="population-mean-confidence-interval.html"><a href="population-mean-confidence-interval.html"><i class="fa fa-check"></i>8.1.11 population mean, confidence interval</a></li>
+<li class="chapter" data-level="" data-path="point-estimated.html"><a href="point-estimated.html"><i class="fa fa-check"></i>8.1.7 point estimated</a></li>
+<li class="chapter" data-level="" data-path="one-mean-z-interval-procedure.html"><a href="one-mean-z-interval-procedure.html"><i class="fa fa-check"></i>8.2.63 one-mean-z-interval procedure</a></li>
+<li class="chapter" data-level="" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html"><i class="fa fa-check"></i>8.3.130 one sample t-test</a></li>
+<li class="chapter" data-level="" data-path="left-tailed-z-test-without-data.html"><a href="left-tailed-z-test-without-data.html"><i class="fa fa-check"></i>9.4.77 left-tailed z-test without data</a></li>
+<li class="chapter" data-level="" data-path="left-tailed-z-test-with-data.html"><a href="left-tailed-z-test-with-data.html"><i class="fa fa-check"></i>9.4.85 left-tailed z-test with data</a></li>
+<li class="chapter" data-level="" data-path="t-test.html"><a href="t-test.html"><i class="fa fa-check"></i>9.5.111 t-test</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-two-tailed.html"><a href="pooled-t-test-two-tailed.html"><i class="fa fa-check"></i>10.2.39 pooled t-test two-tailed</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-right-tailed.html"><a href="pooled-t-test-right-tailed.html"><i class="fa fa-check"></i>10.2.41 pooled t-test right-tailed</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-with-data.html"><a href="pooled-t-test-with-data.html"><i class="fa fa-check"></i>10.2.51 pooled t-test with data</a></li>
+<li class="chapter" data-level="" data-path="nonpooled-t-test-left-tailed.html"><a href="nonpooled-t-test-left-tailed.html"><i class="fa fa-check"></i>10.3.77 nonpooled t.test left-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-two-tailed.html"><a href="paired-t-test-two-tailed.html"><i class="fa fa-check"></i>10.5.149 paired t-test two-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-left-tailed.html"><a href="paired-t-test-left-tailed.html"><i class="fa fa-check"></i>10.5.157 paired t-test left-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-with-confidence-interval.html"><a href="paired-t-test-with-confidence-interval.html"><i class="fa fa-check"></i>10.5.161 paired t-test with confidence interval</a></li>
+<li class="chapter" data-level="" data-path="random-sample-confidence-interval.html"><a href="random-sample-confidence-interval.html"><i class="fa fa-check"></i>12.1.17 random sample confidence interval</a></li>
+<li class="chapter" data-level="" data-path="one-proportion-z-interval.html"><a href="one-proportion-z-interval.html"><i class="fa fa-check"></i>12.1.25 one-proportion z-interval</a></li>
+<li class="chapter" data-level="" data-path="sample-size-without-educated-guess.html"><a href="sample-size-without-educated-guess.html"><i class="fa fa-check"></i>12.1.31 sample size without educated guess</a></li>
+<li class="chapter" data-level="" data-path="sample-size-with-educated-guess.html"><a href="sample-size-with-educated-guess.html"><i class="fa fa-check"></i>12.1.37 sample size with educated guess</a></li>
+<li class="chapter" data-level="" data-path="one-proportion-z-test.html"><a href="one-proportion-z-test.html"><i class="fa fa-check"></i>12.2.81 one-proportion z-test</a></li>
+<li class="chapter" data-level="" data-path="two-proportion-z-test.html"><a href="two-proportion-z-test.html"><i class="fa fa-check"></i>12.3.101 two proportion z-test</a></li>
+<li class="chapter" data-level="" data-path="chi-squared-value.html"><a href="chi-squared-value.html"><i class="fa fa-check"></i>13.1.5 chi squared​-value</a></li>
+<li class="chapter" data-level="" data-path="chi-squaredtest.html"><a href="chi-squaredtest.html"><i class="fa fa-check"></i>13.2.18 chi squared​test</a></li>
+<li class="chapter" data-level="" data-path="contingency-table.html"><a href="contingency-table.html"><i class="fa fa-check"></i>13.3.43 contingency table</a></li>
+<li class="chapter" data-level="" data-path="expected-frequencies.html"><a href="expected-frequencies.html"><i class="fa fa-check"></i>13.4.75 expected frequencies</a></li>
+<li class="chapter" data-level="" data-path="chi-squared-test-with-data.html"><a href="chi-squared-test-with-data.html"><i class="fa fa-check"></i>13.5.103 chi squared test with data</a></li>
+<li class="chapter" data-level="" data-path="linear-regression-line.html"><a href="linear-regression-line.html"><i class="fa fa-check"></i>14.2.63 linear regression line</a></li>
+<li class="chapter" data-level="" data-path="sst-ssr-and-sse.html"><a href="sst-ssr-and-sse.html"><i class="fa fa-check"></i>14.3.100 SST, SSR, and​ SSE</a></li>
+<li class="chapter" data-level="" data-path="sst-ssr-and-sse-1.html"><a href="sst-ssr-and-sse-1.html"><i class="fa fa-check"></i>14.3.97 SST, SSR, and​ SSE</a></li>
+<li class="chapter" data-level="" data-path="f-value.html"><a href="f-value.html"><i class="fa fa-check"></i>16.1.7 F-value</a></li>
+<li class="chapter" data-level="" data-path="anova-table.html"><a href="anova-table.html"><i class="fa fa-check"></i>16.3.43 ANOVA table</a></li>
+<li class="chapter" data-level="" data-path="one-way-anova-test.html"><a href="one-way-anova-test.html"><i class="fa fa-check"></i>16.3.49 one-way ANOVA test</a></li>
+<li class="chapter" data-level="" data-path="one-way-anova-test-1.html"><a href="one-way-anova-test-1.html"><i class="fa fa-check"></i>16.3.60 one-way ANOVA test</a></li>
+<li class="divider"></li>
+<li><a href="#" target="blank">Congratulations!</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">16.3.60</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-regression-line" class="section level1 unnumbered">
+<h1>14.2.63 linear regression line</h1>
+<p>An instructor asked a random sample of eight students to record their study times at the beginning of a course. She then made a table for total hours studied​ (x) over 2 weeks and test score​ (y) at the end of the 2 weeks. The table is given below. Complete parts​ (a) through​ (f).</p>
+<span class="math inline">\(\sum x = 396, \sum y = 2362, \sum xy = 118330, \sum x^2 = 19870\)</span>
+<br/>
+<hr/>
+<p><strong>(a). Find the regression equation for the data points.</strong></p>
+<p>First we need to get the data from the question. (We can import it from Excel)</p>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="linear-regression-line.html#cb569-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">23</span>)</span>
+<span id="cb569-2"><a href="linear-regression-line.html#cb569-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">95</span>, <span class="dv">76</span>, <span class="dv">80</span>, <span class="dv">75</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">83</span>, <span class="dv">75</span>)</span></code></pre></div>
+<hr/>
+<p>From formula sheet</p>
+<p><span class="math inline">\(S_{xx}=\sum(x_i-\bar{x})^2=\sum x_i^2-(\sum x_i)^2/n\)</span></p>
+<p><span class="math inline">\(S_{xy}=\sum(x_i-\bar{x})(y_i-\bar{y})=\sum x_iy_i-(\sum x_i)(\sum y_i)/n\)</span></p>
+<p><span class="math inline">\(S_{yy}=\sum(y_i-\bar{y})^2=\sum y_i^2-(\sum y_i)^2/n\)</span></p>
+<hr/>
+<p>Regression equation: <span class="math inline">\(\hat{y} = b_0 +b_1x\)</span> where</p>
+<p><span class="math inline">\(b_1=\frac{S_{xy}}{S_{xx}}\)</span> and</p>
+<p><span class="math inline">\(b_0 = \frac{1}{n}(\sum y_i-b_1\sum x_i)=\bar{y} - b_1\bar{x}\)</span></p>
+<hr/>
+<p><strong>Names of variables</strong></p>
+<p><span class="math inline">\(S_{xx}: Sxx\)</span></p>
+<p><span class="math inline">\(S_{xy}: Sxy\)</span></p>
+<p><span class="math inline">\(S_{yy}: Syy\)</span></p>
+<hr/>
+<p><strong>First approach, we find linear regression line by using the formula</strong></p>
+<p><strong>1.1 we find <span class="math inline">\(S_{xy}, S_{xx}, S_{yy}\)</span> without finding <span class="math inline">\(\bar x, \bar y\)</span></strong></p>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="linear-regression-line.html#cb570-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span></code></pre></div>
+<p>Find <span class="math inline">\(S_{xy}, S_{xx}, S_{yy}\)</span></p>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="linear-regression-line.html#cb571-1" aria-hidden="true" tabindex="-1"></a>Syy <span class="ot">=</span> <span class="fu">sum</span>(y<span class="sc">*</span>y) <span class="sc">-</span> <span class="fu">sum</span>(y)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n</span>
+<span id="cb571-2"><a href="linear-regression-line.html#cb571-2" aria-hidden="true" tabindex="-1"></a>Sxx <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">*</span>x) <span class="sc">-</span> <span class="fu">sum</span>(x)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n</span>
+<span id="cb571-3"><a href="linear-regression-line.html#cb571-3" aria-hidden="true" tabindex="-1"></a>Sxy <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">*</span>y) <span class="sc">-</span> <span class="fu">sum</span>(x) <span class="sc">*</span> <span class="fu">sum</span>(y) <span class="sc">/</span>n</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="linear-regression-line.html#cb572-1" aria-hidden="true" tabindex="-1"></a>Sxx</span></code></pre></div>
+<pre><code>## [1] 158.875</code></pre>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="linear-regression-line.html#cb574-1" aria-hidden="true" tabindex="-1"></a>Sxy</span></code></pre></div>
+<pre><code>## [1] -183.125</code></pre>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="linear-regression-line.html#cb576-1" aria-hidden="true" tabindex="-1"></a>Syy</span></code></pre></div>
+<pre><code>## [1] 414.875</code></pre>
+<hr/>
+<p><strong>1.2 finding <span class="math inline">\(S_{xy}, S_{xx}, S_{yy}\)</span> using <span class="math inline">\(\bar x, \bar y\)</span> </strong></p>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="linear-regression-line.html#cb578-1" aria-hidden="true" tabindex="-1"></a>Sxx <span class="ot">=</span> <span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb578-2"><a href="linear-regression-line.html#cb578-2" aria-hidden="true" tabindex="-1"></a>Sxy <span class="ot">=</span> <span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">*</span>(y<span class="sc">-</span><span class="fu">mean</span>(y)))</span>
+<span id="cb578-3"><a href="linear-regression-line.html#cb578-3" aria-hidden="true" tabindex="-1"></a>Syy <span class="ot">=</span> <span class="fu">sum</span>((y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="linear-regression-line.html#cb579-1" aria-hidden="true" tabindex="-1"></a>Sxx</span></code></pre></div>
+<pre><code>## [1] 158.875</code></pre>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="linear-regression-line.html#cb581-1" aria-hidden="true" tabindex="-1"></a>Sxy</span></code></pre></div>
+<pre><code>## [1] -183.125</code></pre>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="linear-regression-line.html#cb583-1" aria-hidden="true" tabindex="-1"></a>Syy</span></code></pre></div>
+<pre><code>## [1] 414.875</code></pre>
+<hr/>
+<p>To find <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> in the regression equation: <span class="math inline">\(\hat{y} = b_0 +b_1x\)</span>, we run</p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="linear-regression-line.html#cb585-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">=</span> Sxy <span class="sc">/</span> Sxx</span>
+<span id="cb585-2"><a href="linear-regression-line.html#cb585-2" aria-hidden="true" tabindex="-1"></a>b1</span></code></pre></div>
+<pre><code>## [1] -1.152636</code></pre>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="linear-regression-line.html#cb587-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="fu">mean</span>(y) <span class="sc">-</span> b1 <span class="sc">*</span> <span class="fu">mean</span>(x)</span>
+<span id="cb587-2"><a href="linear-regression-line.html#cb587-2" aria-hidden="true" tabindex="-1"></a>b0</span></code></pre></div>
+<pre><code>## [1] 98.55862</code></pre>
+<p>Round to two decimal places</p>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="linear-regression-line.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(b1, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] -1.15</code></pre>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="linear-regression-line.html#cb591-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(b0, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 98.56</code></pre>
+<p><strong>Second approach, we find linear regression line by using lm() in R</strong></p>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="linear-regression-line.html#cb593-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y<span class="sc">~</span>x)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Coefficients:
+## (Intercept)            x  
+##      98.559       -1.153</code></pre>
+<p>In case that R does not give enough accuracy, we use print()</p>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="linear-regression-line.html#cb595-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Coefficients:
+##       (Intercept)                  x  
+## 98.55861526357197  -1.15263571990559</code></pre>
+<p><strong>Since we have two approaches here, we could do both to double check our answers before submiting.</strong></p>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/14.2.63/14.2.63%20part%20A.png" />
+<hr/>
+<p><strong>(b). Graph the regression equation and the data points.</strong></p>
+<p>We draw a graph by using plot() and abline(). Abline() takes 2 arguments y-intercept (<span class="math inline">\(b_0\)</span>) and slope (<span class="math inline">\(b_1\)</span>)</p>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="linear-regression-line.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span>
+<span id="cb597-2"><a href="linear-regression-line.html#cb597-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(b0, b1)</span></code></pre></div>
+<p><img src="main_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/14.2.63/14.2.63%20part%20B.png" />
+<hr/>
+<p><strong>(c) Describe the apparent relationship between the two variables.</strong></p>
+<p>Since we have negative slope, when x increasess y tends to decrease which means Test Score tends to decrease as Hours Studied increases</p>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/14.2.63/14.2.63%20part%20C.png" />
+<hr/>
+<p><strong>(d) Identify the predictor and response variables.</strong></p>
+<p>The predictor variable is x and the response variable is y.</p>
+<p>So the predictor variable is Hours Studied and the response variable is Test Score.</p>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/14.2.63/14.2.63%20part%20D.png" />
+<hr/>
+<p><strong>(e) Identify outliers and potential influential observations.</strong></p>
+<p>“An outlier is an observation that lies outside the overall pattern of the data. In the context of regression​ analysis, an outlier is a data point that lies far from the regression line relative to the other data points. An influential observation is a data point whose removal causes the regression equation and line to change considerably.”</p>
+<p>We can tell from the graph that there is no outlier or potential influential observation.</p>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/14.2.63/14.2.63%20part%20E.png" />
+<hr/>
+<p><strong>(f). Predict the score for a student that studies for 15hours.</strong></p>
+<p>Since the regression equaation in part a requires rounding the answer to two decimal places</p>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="linear-regression-line.html#cb598-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="fu">round</span>(b0, <span class="dv">2</span>)</span>
+<span id="cb598-2"><a href="linear-regression-line.html#cb598-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">=</span> <span class="fu">round</span>(b1, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="linear-regression-line.html#cb599-1" aria-hidden="true" tabindex="-1"></a>b0</span></code></pre></div>
+<pre><code>## [1] 98.56</code></pre>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="linear-regression-line.html#cb601-1" aria-hidden="true" tabindex="-1"></a>b1</span></code></pre></div>
+<pre><code>## [1] -1.15</code></pre>
+<p>To find predicted score for a student that studies for 15 hours, we run</p>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="linear-regression-line.html#cb603-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="sc">+</span> <span class="dv">15</span> <span class="sc">*</span> b1</span></code></pre></div>
+<pre><code>## [1] 81.31</code></pre>
+<p>Round to the nearest whole number as needed</p>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="linear-regression-line.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling</span>(b0 <span class="sc">+</span> <span class="dv">15</span> <span class="sc">*</span> b1)</span></code></pre></div>
+<pre><code>## [1] 82</code></pre>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/14.2.63/14.2.63%20part%20F.png" />
+<hr/>
+<p><strong>Hope that helps!</strong></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chi-squared-test-with-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sst-ssr-and-sse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/14.2.63.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["main.pdf", "main.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

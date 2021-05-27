@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>16.3.49 one-way ANOVA test | 16.3.60</title>
+  <meta name="description" content="16.3.49 one-way ANOVA test | 16.3.60" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="16.3.49 one-way ANOVA test | 16.3.60" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="16.3.49 one-way ANOVA test | 16.3.60" />
+  
+  
+  
+
+
+
+<meta name="date" content="2021-05-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anova-table.html"/>
+<link rel="next" href="one-way-anova-test-1.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-198021424-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-198021424-1');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="#">MTH 1320 UMSL</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="notice.html"><a href="notice.html"><i class="fa fa-check"></i>Notice</a></li>
+<li class="chapter" data-level="" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i>Install R</a></li>
+<li class="chapter" data-level="" data-path="import-data-from-excel-to-r.html"><a href="import-data-from-excel-to-r.html"><i class="fa fa-check"></i>Import data from Excel to R</a></li>
+<li class="chapter" data-level="" data-path="frequency-distribution.html"><a href="frequency-distribution.html"><i class="fa fa-check"></i>2.2.25 frequency distribution</a></li>
+<li class="chapter" data-level="" data-path="relative-frequency-distribution.html"><a href="relative-frequency-distribution.html"><i class="fa fa-check"></i>2.3.65 relative-frequency distribution</a></li>
+<li class="chapter" data-level="" data-path="steam-leaf.html"><a href="steam-leaf.html"><i class="fa fa-check"></i>2.3.77 steam-leaf</a></li>
+<li class="chapter" data-level="" data-path="mean-mode-and-median.html"><a href="mean-mode-and-median.html"><i class="fa fa-check"></i>3.1.19 mean, mode, and median</a></li>
+<li class="chapter" data-level="" data-path="quartiles.html"><a href="quartiles.html"><i class="fa fa-check"></i>3.4.171 quartiles</a></li>
+<li class="chapter" data-level="" data-path="population-mean.html"><a href="population-mean.html"><i class="fa fa-check"></i>3.5.199 population mean</a></li>
+<li class="chapter" data-level="" data-path="deck-card.html"><a href="deck-card.html"><i class="fa fa-check"></i>4.1.14 deck card</a></li>
+<li class="chapter" data-level="" data-path="probability-distribution.html"><a href="probability-distribution.html"><i class="fa fa-check"></i>5.2.31 probability distribution</a></li>
+<li class="chapter" data-level="" data-path="area-from-z-score.html"><a href="area-from-z-score.html"><i class="fa fa-check"></i>6.2.61 area from z-score</a></li>
+<li class="chapter" data-level="" data-path="z-score.html"><a href="z-score.html"><i class="fa fa-check"></i>6.2.75 z-score</a></li>
+<li class="chapter" data-level="" data-path="z-score-percentage.html"><a href="z-score-percentage.html"><i class="fa fa-check"></i>6.3.97 z-score, percentage</a></li>
+<li class="chapter" data-level="" data-path="population-and-sample-means.html"><a href="population-and-sample-means.html"><i class="fa fa-check"></i>7.1.13 population and sample means</a></li>
+<li class="chapter" data-level="" data-path="sample-standard-deviation.html"><a href="sample-standard-deviation.html"><i class="fa fa-check"></i>7.3.73 sample standard deviation</a></li>
+<li class="chapter" data-level="" data-path="population-mean-confidence-interval.html"><a href="population-mean-confidence-interval.html"><i class="fa fa-check"></i>8.1.11 population mean, confidence interval</a></li>
+<li class="chapter" data-level="" data-path="point-estimated.html"><a href="point-estimated.html"><i class="fa fa-check"></i>8.1.7 point estimated</a></li>
+<li class="chapter" data-level="" data-path="one-mean-z-interval-procedure.html"><a href="one-mean-z-interval-procedure.html"><i class="fa fa-check"></i>8.2.63 one-mean-z-interval procedure</a></li>
+<li class="chapter" data-level="" data-path="one-sample-t-test.html"><a href="one-sample-t-test.html"><i class="fa fa-check"></i>8.3.130 one sample t-test</a></li>
+<li class="chapter" data-level="" data-path="left-tailed-z-test-without-data.html"><a href="left-tailed-z-test-without-data.html"><i class="fa fa-check"></i>9.4.77 left-tailed z-test without data</a></li>
+<li class="chapter" data-level="" data-path="left-tailed-z-test-with-data.html"><a href="left-tailed-z-test-with-data.html"><i class="fa fa-check"></i>9.4.85 left-tailed z-test with data</a></li>
+<li class="chapter" data-level="" data-path="t-test.html"><a href="t-test.html"><i class="fa fa-check"></i>9.5.111 t-test</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-two-tailed.html"><a href="pooled-t-test-two-tailed.html"><i class="fa fa-check"></i>10.2.39 pooled t-test two-tailed</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-right-tailed.html"><a href="pooled-t-test-right-tailed.html"><i class="fa fa-check"></i>10.2.41 pooled t-test right-tailed</a></li>
+<li class="chapter" data-level="" data-path="pooled-t-test-with-data.html"><a href="pooled-t-test-with-data.html"><i class="fa fa-check"></i>10.2.51 pooled t-test with data</a></li>
+<li class="chapter" data-level="" data-path="nonpooled-t-test-left-tailed.html"><a href="nonpooled-t-test-left-tailed.html"><i class="fa fa-check"></i>10.3.77 nonpooled t.test left-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-two-tailed.html"><a href="paired-t-test-two-tailed.html"><i class="fa fa-check"></i>10.5.149 paired t-test two-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-left-tailed.html"><a href="paired-t-test-left-tailed.html"><i class="fa fa-check"></i>10.5.157 paired t-test left-tailed</a></li>
+<li class="chapter" data-level="" data-path="paired-t-test-with-confidence-interval.html"><a href="paired-t-test-with-confidence-interval.html"><i class="fa fa-check"></i>10.5.161 paired t-test with confidence interval</a></li>
+<li class="chapter" data-level="" data-path="random-sample-confidence-interval.html"><a href="random-sample-confidence-interval.html"><i class="fa fa-check"></i>12.1.17 random sample confidence interval</a></li>
+<li class="chapter" data-level="" data-path="one-proportion-z-interval.html"><a href="one-proportion-z-interval.html"><i class="fa fa-check"></i>12.1.25 one-proportion z-interval</a></li>
+<li class="chapter" data-level="" data-path="sample-size-without-educated-guess.html"><a href="sample-size-without-educated-guess.html"><i class="fa fa-check"></i>12.1.31 sample size without educated guess</a></li>
+<li class="chapter" data-level="" data-path="sample-size-with-educated-guess.html"><a href="sample-size-with-educated-guess.html"><i class="fa fa-check"></i>12.1.37 sample size with educated guess</a></li>
+<li class="chapter" data-level="" data-path="one-proportion-z-test.html"><a href="one-proportion-z-test.html"><i class="fa fa-check"></i>12.2.81 one-proportion z-test</a></li>
+<li class="chapter" data-level="" data-path="two-proportion-z-test.html"><a href="two-proportion-z-test.html"><i class="fa fa-check"></i>12.3.101 two proportion z-test</a></li>
+<li class="chapter" data-level="" data-path="chi-squared-value.html"><a href="chi-squared-value.html"><i class="fa fa-check"></i>13.1.5 chi squared​-value</a></li>
+<li class="chapter" data-level="" data-path="chi-squaredtest.html"><a href="chi-squaredtest.html"><i class="fa fa-check"></i>13.2.18 chi squared​test</a></li>
+<li class="chapter" data-level="" data-path="contingency-table.html"><a href="contingency-table.html"><i class="fa fa-check"></i>13.3.43 contingency table</a></li>
+<li class="chapter" data-level="" data-path="expected-frequencies.html"><a href="expected-frequencies.html"><i class="fa fa-check"></i>13.4.75 expected frequencies</a></li>
+<li class="chapter" data-level="" data-path="chi-squared-test-with-data.html"><a href="chi-squared-test-with-data.html"><i class="fa fa-check"></i>13.5.103 chi squared test with data</a></li>
+<li class="chapter" data-level="" data-path="linear-regression-line.html"><a href="linear-regression-line.html"><i class="fa fa-check"></i>14.2.63 linear regression line</a></li>
+<li class="chapter" data-level="" data-path="sst-ssr-and-sse.html"><a href="sst-ssr-and-sse.html"><i class="fa fa-check"></i>14.3.100 SST, SSR, and​ SSE</a></li>
+<li class="chapter" data-level="" data-path="sst-ssr-and-sse-1.html"><a href="sst-ssr-and-sse-1.html"><i class="fa fa-check"></i>14.3.97 SST, SSR, and​ SSE</a></li>
+<li class="chapter" data-level="" data-path="f-value.html"><a href="f-value.html"><i class="fa fa-check"></i>16.1.7 F-value</a></li>
+<li class="chapter" data-level="" data-path="anova-table.html"><a href="anova-table.html"><i class="fa fa-check"></i>16.3.43 ANOVA table</a></li>
+<li class="chapter" data-level="" data-path="one-way-anova-test.html"><a href="one-way-anova-test.html"><i class="fa fa-check"></i>16.3.49 one-way ANOVA test</a></li>
+<li class="chapter" data-level="" data-path="one-way-anova-test-1.html"><a href="one-way-anova-test-1.html"><i class="fa fa-check"></i>16.3.60 one-way ANOVA test</a></li>
+<li class="divider"></li>
+<li><a href="#" target="blank">Congratulations!</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">16.3.60</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="one-way-anova-test" class="section level1 unnumbered">
+<h1>16.3.49 one-way ANOVA test</h1>
+<p>To see how much difference time of day made on the speed at which he could download files, a college sophomore placed a file on a remote server, then proceeded to download it at three different time periods of the day. He downloaded the file 18 times in all, 6 times at each time of day, and recorded the time in seconds that the download took. At the 5% significance level, do the data provide sufficient evidence to conclude that a difference exists in mean download speed?</p>
+<p><br/></p>
+<hr />
+<p>Notation in one-way ANOVA:</p>
+<ul>
+<li><p>k = number of populations</p></li>
+<li><p>n = total number of observations</p></li>
+<li><p><span class="math inline">\(\bar x\)</span> = mean of all n observations</p></li>
+<li><p><span class="math inline">\(n_j\)</span> = size of sample from Population j</p></li>
+<li><p><span class="math inline">\(\bar{x_j}\)</span> = mean of sample from Population j</p></li>
+<li><p><span class="math inline">\(s_j^2\)</span> = variance of sample from Population j</p></li>
+<li><p><span class="math inline">\(T_j\)</span> = sum of sample data from Population j</p></li>
+</ul>
+</hr>
+<p>Defining formulas from sums of squares in one-way ANOVA:</p>
+<ul>
+<li><p>SST = <span class="math inline">\(\sum (x_i - \bar x)^2\)</span></p></li>
+<li><p>SSTR = <span class="math inline">\(\sum n_j(\bar{x_j} - \bar{x})^2\)</span></p></li>
+<li><p>SSE = <span class="math inline">\(\sum (n_j-1)s_j^2\)</span></p></li>
+</ul>
+<hr/>
+One-way ANOVA identity: SST = SSTR + SSE
+<hr/>
+<p>Computing formulas from sums of squares in one-way ANOVA:</p>
+<ul>
+<li><p>SST = <span class="math inline">\(\sum x_i^2 - (\sum x_i)^2/n\)</span></p></li>
+<li><p>SSTR = <span class="math inline">\(\sum (T_j^2/n_j) - (\sum x_i)^2/n\)</span></p></li>
+<li><p>SSE = SST - SSTR</p></li>
+</ul>
+<strong>The way they define <span class="math inline">\(\sum (T_j^2/n_j)\)</span> is different from the one for x</strong>
+<hr/>
+<p>Mean squares in one-way ANOVA:</p>
+<ul>
+<li><p>MSTR = <span class="math inline">\(\frac{SSTR}{k-1}\)</span></p></li>
+<li><p>MSE = <span class="math inline">\(\frac{SSE}{n-k}\)</span></p></li>
+<li><p>SSE = SST - SSTR</p></li>
+</ul>
+<hr/>
+<p>Test statistic for one-way ANOVAA (independent samples, normal populations, and equal population standard deviations):</p>
+<ul>
+<li>F = <span class="math inline">\(\frac{MSTR}{MSE}\)</span></li>
+</ul>
+<p>with df = (k - 1, n - k)</p>
+<hr/>
+<p>Confidence interval for <span class="math inline">\(\mu_i - \mu_j\)</span> in the Tukey multiple-comparison method (independent samples, normal populations, and equal population sstandard deviations):</p>
+<ul>
+<li><span class="math inline">\((\bar{x_i} - \bar{x_j}) \pm \frac{q_{\alpha}}{\sqrt{2}}.s\sqrt{\frac{1}{n_i} + \frac{1}{n_j}}\)</span></li>
+</ul>
+<p>where s = <span class="math inline">\(\sqrt{MSE}\)</span> and <span class="math inline">\(q_{\alpha}\)</span> is obtained for a q-curve with parameters k and n - k</p>
+<hr/>
+<p>Test statistic for a Kruskal-Wallis test (independent samples, same-shape populations, all sample sizes 5 or greater):</p>
+<ul>
+<li><p><span class="math inline">\(K=\frac{SSTR}{SST/(n-1)}\)</span> or</p></li>
+<li><p><span class="math inline">\(K=\frac{12}{n(n+1)}\sum_{j=1}^{k} \frac{R_j^2}{n_j} - 3(n+1)\)</span></p></li>
+</ul>
+<p>where SSTR and SST are computed for the ranks of the data, and <span class="math inline">\(R_j\)</span> denotes the sum of the ranks for the sample data from Population j. K has approximately a chi-square distribution with df = k -1</p>
+<hr/>
+<hr/>
+<p><strong>First, let <span class="math inline">\(\mu_1, \mu_2,\)</span> and <span class="math inline">\(\mu_3\)</span> be the population means times for 7​ a.m., 5​ p.m., and 12​ a.m., respectively. What are the correct hypotheses for a​ one-way ANOVA​ test?</strong></p>
+<p>Since the question asks “At the​ 5% significance​ level, do the data provide sufficient evidence to conclude that a difference exists in mean download​ speed?.” the correct hypothesis is.</p>
+<p><span class="math inline">\(H_0: \mu_1 = \mu_2 = \mu_3\)</span></p>
+<span class="math inline">\(H_a:\)</span> Not all the means are equal.
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/16.3.49/16.3.49%20part%20A.png" />
+<hr/>
+<p><strong>Now conduct a​ one-way ANOVA test on the data. What is the​ F-statistic?</strong></p>
+<p>First we need to get the data from the question. (We can import it from Excel)</p>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="one-way-anova-test.html#cb747-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/16.3.49/16.3.49.csv&quot;</span>)</span>
+<span id="cb747-2"><a href="one-way-anova-test.html#cb747-2" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<pre><code>##   Early Evening Late
+## 1    70     206  217
+## 2   140     293  177
+## 3    86     251  176
+## 4   209     308  222
+## 5   109     237  212
+## 6    76     209  164</code></pre>
+<p>The type of data is tibble in R. To avoid confusion when working with other question, we should create a data frame.</p>
+<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="one-way-anova-test.html#cb749-1" aria-hidden="true" tabindex="-1"></a>dframe <span class="ot">=</span> <span class="fu">data.frame</span>(data)</span>
+<span id="cb749-2"><a href="one-way-anova-test.html#cb749-2" aria-hidden="true" tabindex="-1"></a>dframe</span></code></pre></div>
+<pre><code>##   Early Evening Late
+## 1    70     206  217
+## 2   140     293  177
+## 3    86     251  176
+## 4   209     308  222
+## 5   109     237  212
+## 6    76     209  164</code></pre>
+<p><strong>First approach: using anova() in R which Professor Covert introduces in the video lectures (recommended)</strong></p>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="one-way-anova-test.html#cb751-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb751-2"><a href="one-way-anova-test.html#cb751-2" aria-hidden="true" tabindex="-1"></a>len <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb751-3"><a href="one-way-anova-test.html#cb751-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(item <span class="cf">in</span> dframe){</span>
+<span id="cb751-4"><a href="one-way-anova-test.html#cb751-4" aria-hidden="true" tabindex="-1"></a>  X <span class="ot">&lt;-</span> <span class="fu">c</span>(X, item[<span class="sc">!</span><span class="fu">is.na</span>(item)])</span>
+<span id="cb751-5"><a href="one-way-anova-test.html#cb751-5" aria-hidden="true" tabindex="-1"></a>  len <span class="ot">&lt;-</span> <span class="fu">c</span>(len, <span class="fu">length</span>(item[<span class="sc">!</span><span class="fu">is.na</span>(item)]))</span>
+<span id="cb751-6"><a href="one-way-anova-test.html#cb751-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb751-7"><a href="one-way-anova-test.html#cb751-7" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div>
+<pre><code>##  [1]  70 140  86 209 109  76 206 293 251 308 237 209 217 177 176 222 212 164</code></pre>
+<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="one-way-anova-test.html#cb753-1" aria-hidden="true" tabindex="-1"></a>len</span></code></pre></div>
+<pre><code>## [1] 6 6 6</code></pre>
+<p>We import name of our data.</p>
+<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="one-way-anova-test.html#cb755-1" aria-hidden="true" tabindex="-1"></a>Y<span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">names</span>(dframe), <span class="at">times =</span> len)</span>
+<span id="cb755-2"><a href="one-way-anova-test.html#cb755-2" aria-hidden="true" tabindex="-1"></a>Y</span></code></pre></div>
+<pre><code>##  [1] &quot;Early&quot;   &quot;Early&quot;   &quot;Early&quot;   &quot;Early&quot;   &quot;Early&quot;   &quot;Early&quot;   &quot;Evening&quot;
+##  [8] &quot;Evening&quot; &quot;Evening&quot; &quot;Evening&quot; &quot;Evening&quot; &quot;Evening&quot; &quot;Late&quot;    &quot;Late&quot;   
+## [15] &quot;Late&quot;    &quot;Late&quot;    &quot;Late&quot;    &quot;Late&quot;</code></pre>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="one-way-anova-test.html#cb757-1" aria-hidden="true" tabindex="-1"></a>dframe2 <span class="ot">=</span> <span class="fu">data.frame</span>(X,Y)</span>
+<span id="cb757-2"><a href="one-way-anova-test.html#cb757-2" aria-hidden="true" tabindex="-1"></a>dframe2</span></code></pre></div>
+<pre><code>##      X       Y
+## 1   70   Early
+## 2  140   Early
+## 3   86   Early
+## 4  209   Early
+## 5  109   Early
+## 6   76   Early
+## 7  206 Evening
+## 8  293 Evening
+## 9  251 Evening
+## 10 308 Evening
+## 11 237 Evening
+## 12 209 Evening
+## 13 217    Late
+## 14 177    Late
+## 15 176    Late
+## 16 222    Late
+## 17 212    Late
+## 18 164    Late</code></pre>
+<p>We run anova()</p>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="one-way-anova-test.html#cb759-1" aria-hidden="true" tabindex="-1"></a>fm1 <span class="ot">=</span> <span class="fu">aov</span>(X<span class="sc">~</span>Y, <span class="at">data=</span>dframe2)</span>
+<span id="cb759-2"><a href="one-way-anova-test.html#cb759-2" aria-hidden="true" tabindex="-1"></a>fm1</span></code></pre></div>
+<pre><code>## Call:
+##    aov(formula = X ~ Y, data = dframe2)
+## 
+## Terms:
+##                        Y Residuals
+## Sum of Squares  55776.44  26028.67
+## Deg. of Freedom        2        15
+## 
+## Residual standard error: 41.65627
+## Estimated effects may be unbalanced</code></pre>
+<div class="sourceCode" id="cb761"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb761-1"><a href="one-way-anova-test.html#cb761-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fm1)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: X
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## Y          2  55776 27888.2  16.072 0.0001862 ***
+## Residuals 15  26029  1735.2                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>We can run str() to see structure of our data. We can extract any data from the frame.</p>
+<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="one-way-anova-test.html#cb763-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">anova</span>(fm1))</span></code></pre></div>
+<pre><code>## Classes &#39;anova&#39; and &#39;data.frame&#39;:    2 obs. of  5 variables:
+##  $ Df     : int  2 15
+##  $ Sum Sq : num  55776 26029
+##  $ Mean Sq: num  27888 1735
+##  $ F value: num  16.1 NA
+##  $ Pr(&gt;F) : num  0.000186 NA
+##  - attr(*, &quot;heading&quot;)= chr [1:2] &quot;Analysis of Variance Table\n&quot; &quot;Response: X&quot;</code></pre>
+<p>Round to 2 decimal places</p>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb765-1"><a href="one-way-anova-test.html#cb765-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>((<span class="fu">anova</span>(fm1)<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>), <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 16.07    NA</code></pre>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/16.3.49/16.3.49%20part%20B.png" />
+<hr/>
+<p><strong>Now determine the critical value <span class="math inline">\(F_{\alpha}\)</span></strong></p>
+<p>Since <span class="math inline">\(\alpha = .05\)</span>, df(2,15)</p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="one-way-anova-test.html#cb767-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="dv">1</span><span class="fl">-.05</span>, <span class="dv">2</span>, <span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## [1] 3.68232</code></pre>
+<p>Round to decimal places</p>
+<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="one-way-anova-test.html#cb769-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qf</span>(<span class="dv">1</span><span class="fl">-.05</span>, <span class="dv">2</span>, <span class="dv">15</span>), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 3.68</code></pre>
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/16.3.49/16.3.49%20part%20C.png" />
+<hr/>
+Since our test statistic = 16.07 &gt; our critical value <span class="math inline">\(F_{\alpha}=3.68\)</span> and it is a right-tailed test, we have enough evidence to reject the hypothesis.
+<hr/>
+<img src="https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/16.3.49/16.3.49%20part%20D.png" />
+<hr/>
+<strong>Second approach: using the formula from the book</strong>
+<hr/>
+<p><strong>The same approach with question 16.3.43, we could see that two approaches have the same answer</strong></p>
+<p><strong>(a) Compute​ SST, SSTR, and SSE using the following computing​ formulas, where xi is the ith​ observation, n is the total number of​ observations, nj is the sample size for population​ j, and Tj is the sum of the sample data from population j.</strong></p>
+<p><strong>Names of variables</strong></p>
+<p><span class="math inline">\(\sum{x}: Sx\)</span></p>
+<p><span class="math inline">\(\sum x^2: Sxx\)</span>
+<span class="math inline">\(\sum (T_j^2/n_j)\)</span>: T</p>
+<p>n = total number of observations: n</p>
+<hr/>
+<p>To make it easy to find <span class="math inline">\(\sum x\)</span>, we store all data into a variable x</p>
+<div class="sourceCode" id="cb771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb771-1"><a href="one-way-anova-test.html#cb771-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb771-2"><a href="one-way-anova-test.html#cb771-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(item <span class="cf">in</span> dframe){</span>
+<span id="cb771-3"><a href="one-way-anova-test.html#cb771-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, item[<span class="sc">!</span><span class="fu">is.na</span>(item)])</span>
+<span id="cb771-4"><a href="one-way-anova-test.html#cb771-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb771-5"><a href="one-way-anova-test.html#cb771-5" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##  [1]  70 140  86 209 109  76 206 293 251 308 237 209 217 177 176 222 212 164</code></pre>
+<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="one-way-anova-test.html#cb773-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb773-2"><a href="one-way-anova-test.html#cb773-2" aria-hidden="true" tabindex="-1"></a>n</span></code></pre></div>
+<pre><code>## [1] 18</code></pre>
+<p><strong>Find <span class="math inline">\(\sum x_i\)</span></strong></p>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="one-way-anova-test.html#cb775-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3362</code></pre>
+<p><strong>Find <span class="math inline">\(\sum x_i^2\)</span></strong></p>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="one-way-anova-test.html#cb777-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">*</span>x)</span></code></pre></div>
+<pre><code>## [1] 709752</code></pre>
+<p><strong>Find SST </strong></p>
+<p>To find SST, we use formula SST = <span class="math inline">\(\sum x_i^2 - (\sum x_i)^2/n\)</span></p>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb779-1"><a href="one-way-anova-test.html#cb779-1" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">*</span>x) <span class="sc">-</span> (<span class="fu">sum</span>(x))<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n</span>
+<span id="cb779-2"><a href="one-way-anova-test.html#cb779-2" aria-hidden="true" tabindex="-1"></a>SST</span></code></pre></div>
+<pre><code>## [1] 81805.11</code></pre>
+<p><strong>Find <span class="math inline">\(\sum (T_j^2/n_j)\)</span></strong></p>
+<div class="sourceCode" id="cb781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb781-1"><a href="one-way-anova-test.html#cb781-1" aria-hidden="true" tabindex="-1"></a>T <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb781-2"><a href="one-way-anova-test.html#cb781-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(item <span class="cf">in</span> dframe){</span>
+<span id="cb781-3"><a href="one-way-anova-test.html#cb781-3" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">=</span>  item[<span class="sc">!</span><span class="fu">is.na</span>(item)]</span>
+<span id="cb781-4"><a href="one-way-anova-test.html#cb781-4" aria-hidden="true" tabindex="-1"></a>  T <span class="ot">=</span> T <span class="sc">+</span> <span class="fu">sum</span>(t)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fu">length</span>(t)</span>
+<span id="cb781-5"><a href="one-way-anova-test.html#cb781-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb781-6"><a href="one-way-anova-test.html#cb781-6" aria-hidden="true" tabindex="-1"></a>T</span></code></pre></div>
+<pre><code>## [1] 683723.3</code></pre>
+<p><strong>Find SSTR, we use formula SSTR = <span class="math inline">\(\sum (T_j^2/n_j) - (\sum x_i)^2/n\)</span> </strong></p>
+<div class="sourceCode" id="cb783"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb783-1"><a href="one-way-anova-test.html#cb783-1" aria-hidden="true" tabindex="-1"></a>SSTR <span class="ot">=</span> T <span class="sc">-</span> <span class="fu">sum</span>(x)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n</span>
+<span id="cb783-2"><a href="one-way-anova-test.html#cb783-2" aria-hidden="true" tabindex="-1"></a>SSTR</span></code></pre></div>
+<pre><code>## [1] 55776.44</code></pre>
+<p><strong>Find SSE, we use formula SSE = SST - SSTR </strong></p>
+<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="one-way-anova-test.html#cb785-1" aria-hidden="true" tabindex="-1"></a>SSE <span class="ot">=</span> SST <span class="sc">-</span> SSTR</span>
+<span id="cb785-2"><a href="one-way-anova-test.html#cb785-2" aria-hidden="true" tabindex="-1"></a>SSE</span></code></pre></div>
+<pre><code>## [1] 26028.67</code></pre>
+<p><strong>(b). Compare your results in part​ (a) for SSTR and SSE with the following results from the defining formulas.</strong></p>
+<p>We find SSTR, SSE, SST by using defining formula</p>
+<p><strong>Find SST using the formula SST = <span class="math inline">\(\sum (x_i - \bar x)^2\)</span></strong></p>
+<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb787-1"><a href="one-way-anova-test.html#cb787-1" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">*</span>x) <span class="sc">-</span> (<span class="fu">sum</span>(x))<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n</span>
+<span id="cb787-2"><a href="one-way-anova-test.html#cb787-2" aria-hidden="true" tabindex="-1"></a>SST</span></code></pre></div>
+<pre><code>## [1] 81805.11</code></pre>
+<p><strong>Find SSTR using the formula SSTR = <span class="math inline">\(\sum n_j(\bar{x_j} - \bar{x})^2\)</span></strong></p>
+<div class="sourceCode" id="cb789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb789-1"><a href="one-way-anova-test.html#cb789-1" aria-hidden="true" tabindex="-1"></a>SSTR <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb789-2"><a href="one-way-anova-test.html#cb789-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(item <span class="cf">in</span> dframe){</span>
+<span id="cb789-3"><a href="one-way-anova-test.html#cb789-3" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">=</span>  item[<span class="sc">!</span><span class="fu">is.na</span>(item)]</span>
+<span id="cb789-4"><a href="one-way-anova-test.html#cb789-4" aria-hidden="true" tabindex="-1"></a>  SSTR <span class="ot">=</span> SSTR <span class="sc">+</span> <span class="fu">length</span>(t)<span class="sc">*</span>(<span class="fu">mean</span>(t) <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb789-5"><a href="one-way-anova-test.html#cb789-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb789-6"><a href="one-way-anova-test.html#cb789-6" aria-hidden="true" tabindex="-1"></a>SSTR</span></code></pre></div>
+<pre><code>## [1] 55776.44</code></pre>
+<p><strong>Find SSE using the formula SSE = <span class="math inline">\(\sum (n_j-1)s_j^2\)</span></strong></p>
+<div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="one-way-anova-test.html#cb791-1" aria-hidden="true" tabindex="-1"></a>SSE <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb791-2"><a href="one-way-anova-test.html#cb791-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(item <span class="cf">in</span> dframe){</span>
+<span id="cb791-3"><a href="one-way-anova-test.html#cb791-3" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">=</span>  item[<span class="sc">!</span><span class="fu">is.na</span>(item)]</span>
+<span id="cb791-4"><a href="one-way-anova-test.html#cb791-4" aria-hidden="true" tabindex="-1"></a>  SSE <span class="ot">=</span> SSE <span class="sc">+</span> (<span class="fu">length</span>(t)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="fu">sd</span>(t)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb791-5"><a href="one-way-anova-test.html#cb791-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb791-6"><a href="one-way-anova-test.html#cb791-6" aria-hidden="true" tabindex="-1"></a>SSE</span></code></pre></div>
+<pre><code>## [1] 26028.67</code></pre>
+<strong>We have the same answer by using two different formulas.</strong>
+<hr/>
+<strong>(c) Construct a​ one-way ANOVA table.</strong>
+<hr/>
+<p><strong>Find df treatment </strong></p>
+<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="one-way-anova-test.html#cb793-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">=</span> <span class="fu">length</span>(dframe)</span>
+<span id="cb793-2"><a href="one-way-anova-test.html#cb793-2" aria-hidden="true" tabindex="-1"></a>k<span class="dv">-1</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p><strong>Find SS treatment </strong></p>
+<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="one-way-anova-test.html#cb795-1" aria-hidden="true" tabindex="-1"></a>SSTR</span></code></pre></div>
+<pre><code>## [1] 55776.44</code></pre>
+<p><strong>Find MS treatment </strong></p>
+<div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="one-way-anova-test.html#cb797-1" aria-hidden="true" tabindex="-1"></a>MSTR <span class="ot">=</span> SSTR<span class="sc">/</span>(k<span class="dv">-1</span>)</span>
+<span id="cb797-2"><a href="one-way-anova-test.html#cb797-2" aria-hidden="true" tabindex="-1"></a>MSTR</span></code></pre></div>
+<pre><code>## [1] 27888.22</code></pre>
+<p><strong>Find Error df </strong></p>
+<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="one-way-anova-test.html#cb799-1" aria-hidden="true" tabindex="-1"></a>n <span class="sc">-</span> k</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<p><strong>Find Error SS </strong></p>
+<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="one-way-anova-test.html#cb801-1" aria-hidden="true" tabindex="-1"></a>SSE</span></code></pre></div>
+<pre><code>## [1] 26028.67</code></pre>
+<p><strong>Find Error MS </strong></p>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="one-way-anova-test.html#cb803-1" aria-hidden="true" tabindex="-1"></a>MSE <span class="ot">=</span> SSE <span class="sc">/</span> (n <span class="sc">-</span> k)</span>
+<span id="cb803-2"><a href="one-way-anova-test.html#cb803-2" aria-hidden="true" tabindex="-1"></a>MSE</span></code></pre></div>
+<pre><code>## [1] 1735.244</code></pre>
+<p><strong>Find F-statistic treatment </strong></p>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="one-way-anova-test.html#cb805-1" aria-hidden="true" tabindex="-1"></a>MSTR <span class="sc">/</span> MSE</span></code></pre></div>
+<pre><code>## [1] 16.07164</code></pre>
+<p><strong>Find df total</strong></p>
+<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="one-way-anova-test.html#cb807-1" aria-hidden="true" tabindex="-1"></a>n <span class="sc">-</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<p><strong>Find SS total</strong></p>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="one-way-anova-test.html#cb809-1" aria-hidden="true" tabindex="-1"></a>SST</span></code></pre></div>
+<pre><code>## [1] 81805.11</code></pre>
+<hr/>
+<p><strong>Now determine the critical value <span class="math inline">\(F_{\alpha}\)</span></strong></p>
+<p>Since <span class="math inline">\(\alpha = .05\)</span></p>
+<div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="one-way-anova-test.html#cb811-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb811-2"><a href="one-way-anova-test.html#cb811-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="dv">1</span><span class="sc">-</span>alpha, k<span class="dv">-1</span>, n<span class="sc">-</span>k)</span></code></pre></div>
+<pre><code>## [1] 3.68232</code></pre>
+<p>Round to decimal places</p>
+<div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb813-1"><a href="one-way-anova-test.html#cb813-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">qf</span>(<span class="dv">1</span><span class="sc">-</span>alpha, k<span class="dv">-1</span>, n<span class="sc">-</span>k), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 3.68</code></pre>
+<hr/>
+<hr/>
+<p><strong>Hope that helps!</strong></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova-table.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="one-way-anova-test-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/16.3.49.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["main.pdf", "main.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

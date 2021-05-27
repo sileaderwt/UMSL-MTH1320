@@ -1,0 +1,69 @@
+--- 
+title: "MTH 1320 - UMSL"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: ""
+---
+
+---
+title: "Introduction"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction{-}
+<hr/>
+**This document is an open source project which is designed as supplemental material on homework problems in MTH 1320 (not for teaching purpose)**
+<hr/>
+
+<span style="color:red">**DISCLAIMER: SI leader does not teach the class. I am personally not at that academic level. It is a great opportunity to have chance to work with you, professor Covert, and professor Sager in this semester. If you have any academic question related to content in this class, you should ask professor Covert and professor Sager.**<span/>
+
+
+
+<hr/>
+<span style="color: #0000FF">This document shows how to use R to get data in each chapter which is introduced in video lectures.<span/>
+
+**There are more than one way to solve problems. These could not be the best approaches. If you come up with something more efficient, please feel free to share!!** 
+
+<hr/>
+
+**Short story**
+
+I have been working as a SI leader for a half of a year. I realize there are two main phases to study statistic.
+
+<hr/>
+![](https://raw.githubusercontent.com/sileaderwt/MTH1320-UMSL/main/Image%2BData/Introduction/Introduction.png)
+<hr/>
+
+As you can see from the picture, these two phases are overlaped with each other. Since MTH 1320 is the first statistic class level which is required for many majors including non-STEM majors, there are many challenges for non-STEM students working on phase 2. 
+
+I have seen a friend studying Nursing spends hours each week just only to get the right data for a question which I personally think it is an ineffiecient way to study and we should spend more time in phase 1. Statistic is much more than just getting the right number.
+
+This document helps us to reduce the time we spend on phase 2. 
+
+<hr/>
+**Open source project**
+<hr/>
+**SI leader - University of Missouri St. Louis**
+<hr/>
+**The MIT License (MIT)**
+
+<span>Copyright &copy; <2021> &lt;Warren&gt; <span/>
+
+<hr/>
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
